@@ -9,7 +9,7 @@
 
 This package made by [Surf](https://surf.ru).
 
-## About
+## Description
 
 A library that helps to perform actions with some periodicity
 
