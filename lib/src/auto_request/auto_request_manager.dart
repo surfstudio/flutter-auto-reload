@@ -27,27 +27,26 @@ const _defaultMaxReloadDurationSeconds = 1800;
 /// from [_minReloadDurationSeconds] to [_maxReloadDurationSeconds]
 /// exponentially increasing
 class AutoRequestManager implements AutoFutureManager {
-  AutoRequestManager({
-    int? minReloadDurationSeconds,
-    int? maxReloadDurationSeconds,
-  })  : _minReloadDurationSeconds =
-            minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
-        _maxReloadDurationSeconds =
-            maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
-    _currentReloadDuration = _minReloadDurationSeconds;
-  }
-
   final int _minReloadDurationSeconds;
   final int _maxReloadDurationSeconds;
-  late int _currentReloadDuration;
-
   final _connectivity = Connectivity();
-  StreamSubscription<ConnectivityResult>? _connectivitySubscription;
 
   final _queue = <String, Future<void> Function()>{};
   final _callbacks = <String, AutoFutureCallback>{};
 
+  late int _currentReloadDuration;
+
+  StreamSubscription<ConnectivityResult>? _connectivitySubscription;
+
   Timer? _requestTimer;
+
+  AutoRequestManager({
+    int? minReloadDurationSeconds,
+    int? maxReloadDurationSeconds,
+  })  : _minReloadDurationSeconds = minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
+        _maxReloadDurationSeconds = maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
+    _currentReloadDuration = _minReloadDurationSeconds;
+  }
 
   /// register request for auto reload
   @override
@@ -76,8 +75,7 @@ class AutoRequestManager implements AutoFutureManager {
 
   Future<void> _tryReload() async {
     await _connectivity.checkConnectivity();
-    _connectivitySubscription ??=
-        _connectivity.onConnectivityChanged.listen(_reloadRequest);
+    _connectivitySubscription ??= _connectivity.onConnectivityChanged.listen(_reloadRequest);
   }
 
   void _reloadRequest(ConnectivityResult connection) {
@@ -135,8 +133,7 @@ class AutoRequestManager implements AutoFutureManager {
     }
   }
 
-  bool _needToReload(ConnectivityResult connection) =>
-      _haveConnection(connection);
+  bool _needToReload(ConnectivityResult connection) => _haveConnection(connection);
 
   bool _haveConnection(ConnectivityResult connection) {
     switch (connection) {

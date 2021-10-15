@@ -13,6 +13,10 @@
 // limitations under the License.
 
 class Post {
+  final int? userId;
+  final int? id;
+  final String? title;
+  final String? body;
   Post({
     this.userId,
     this.id,
@@ -28,9 +32,4 @@ class Post {
       body: json['body'] as String,
     );
   }
-
-  final int? userId;
-  final int? id;
-  final String? title;
-  final String? body;
 }
