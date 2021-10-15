@@ -43,8 +43,10 @@ class AutoRequestManager implements AutoFutureManager {
   AutoRequestManager({
     int? minReloadDurationSeconds,
     int? maxReloadDurationSeconds,
-  })  : _minReloadDurationSeconds = minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
-        _maxReloadDurationSeconds = maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
+  })  : _minReloadDurationSeconds =
+            minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
+        _maxReloadDurationSeconds =
+            maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
     _currentReloadDuration = _minReloadDurationSeconds;
   }
 
@@ -75,7 +77,8 @@ class AutoRequestManager implements AutoFutureManager {
 
   Future<void> _tryReload() async {
     await _connectivity.checkConnectivity();
-    _connectivitySubscription ??= _connectivity.onConnectivityChanged.listen(_reloadRequest);
+    _connectivitySubscription ??=
+        _connectivity.onConnectivityChanged.listen(_reloadRequest);
   }
 
   void _reloadRequest(ConnectivityResult connection) {
@@ -133,7 +136,8 @@ class AutoRequestManager implements AutoFutureManager {
     }
   }
 
-  bool _needToReload(ConnectivityResult connection) => _haveConnection(connection);
+  bool _needToReload(ConnectivityResult connection) =>
+      _haveConnection(connection);
 
   bool _haveConnection(ConnectivityResult connection) {
     switch (connection) {
