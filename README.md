@@ -45,52 +45,45 @@ usage:
 ## Example
 1. Call function `startAutoReload()`:
 
-    ```dart
-    int _countOfReload = 0;
-      @override
-       void initState() {
-       super.initState();
-       startAutoReload();
-      }
-      ```
-
-
+```dart
+int _countOfReload = 0;
+@override
+void initState() {
+super.initState();
+ startAutoReload();
+  }
+  ```
 2. Override function `autoReload()`:
 
-    ```dart
-    @override
-     void autoReload() {
-     setState(() {
-        _countOfReload = _countOfReload + 1;
-      });
-    }
-    ```
-
-
+```dart
+@override
+void autoReload() {
+setState(() {
+  _countOfReload = _countOfReload + 1;
+});
+}
+```
 2. Display `_countOfReload`:
 
-    ```dart
-    @override
-    Widget build(BuildContext context) {
-      return Column(
-        children: <Widget>[
-          const Spacer(),
-          const Text(
-            'auto reload example:',
-            style: TextStyle(
-              fontStyle: FontStyle.normal,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          Text('count of reload $_countOfReload'),
-          const Spacer(),
-        ],
-      );
-    }
-    ```
-
-
-
+```dart
+@override
+Widget build(BuildContext context) {
+  return Column(
+    children: <Widget>[
+      const Spacer(),
+      const Text(
+        'auto reload example:',
+        style: TextStyle(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Text('count of reload $_countOfReload'),
+      const Spacer(),
+    ],
+  );
+}
+```
 ## Installation
 
 Add `auto_reload` to your `pubspec.yaml` file:
