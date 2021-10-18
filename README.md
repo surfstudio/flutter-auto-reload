@@ -9,11 +9,9 @@
 
 This package made by [Surf](https://surf.ru).
 
-## About
+## Description
 
 A library that helps to perform actions with some periodicity
-
-## Usage
 
 ### AutoReload
 
@@ -43,6 +41,53 @@ usage:
 
 1. Add your request in [autoReload]
 2. Wait callback about successful completion
+
+## Example
+
+1. Call function `startAutoReload()`:
+
+```dart
+int _countOfReload = 0;
+
+@override
+void initState() {
+  super.initState();
+  startAutoReload();
+}
+```
+
+2. Override function `autoReload()`:
+
+```dart
+@override
+void autoReload() {
+  setState(() {
+    _countOfReload = _countOfReload + 1;
+  });
+}
+```
+
+3. Display `_countOfReload`:
+
+```dart
+@override
+Widget build(BuildContext context) {
+  return Column(
+    children: <Widget>[
+      const Spacer(),
+      const Text(
+        'auto reload example:',
+        style: TextStyle(
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Text('count of reload $_countOfReload'),
+      const Spacer(),
+    ],
+  );
+}
+```
 
 ## Installation
 
