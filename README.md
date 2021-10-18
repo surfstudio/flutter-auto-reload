@@ -67,7 +67,7 @@ void autoReload() {
 }
 ```
 
-2. Display `_countOfReload` :
+3. Display `_countOfReload`:
 
 ```dart
 @override
