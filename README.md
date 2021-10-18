@@ -51,8 +51,8 @@ int _countOfReload = 0;
 
 @override
 void initState() {
-super.initState();
-   startAutoReload();
+  super.initState();
+  startAutoReload();
 }
 ```
 
@@ -87,7 +87,6 @@ Widget build(BuildContext context) {
     ],
   );
 }
-
 ```
 
 ## Installation
