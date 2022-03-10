@@ -16,7 +16,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:auto_reload/src/auto_request/auto_future_manager.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 const _defaultMinReloadDurationSeconds = 1;
 const _defaultMaxReloadDurationSeconds = 1800;
