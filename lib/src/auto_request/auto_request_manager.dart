@@ -27,6 +27,15 @@ const _defaultMaxReloadDurationSeconds = 1800;
 /// from [_minReloadDurationSeconds] to [_maxReloadDurationSeconds]
 /// exponentially increasing
 class AutoRequestManager implements AutoFutureManager {
+  AutoRequestManager({
+    int? minReloadDurationSeconds,
+    int? maxReloadDurationSeconds,
+  })  : _minReloadDurationSeconds =
+            minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
+        _maxReloadDurationSeconds =
+            maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
+    _currentReloadDuration = _minReloadDurationSeconds;
+  }
   final int _minReloadDurationSeconds;
   final int _maxReloadDurationSeconds;
   final _connectivity = Connectivity();
@@ -39,16 +48,6 @@ class AutoRequestManager implements AutoFutureManager {
   StreamSubscription<ConnectivityResult>? _connectivitySubscription;
 
   Timer? _requestTimer;
-
-  AutoRequestManager({
-    int? minReloadDurationSeconds,
-    int? maxReloadDurationSeconds,
-  })  : _minReloadDurationSeconds =
-            minReloadDurationSeconds ?? _defaultMinReloadDurationSeconds,
-        _maxReloadDurationSeconds =
-            maxReloadDurationSeconds ?? _defaultMaxReloadDurationSeconds {
-    _currentReloadDuration = _minReloadDurationSeconds;
-  }
 
   /// register request for auto reload
   @override

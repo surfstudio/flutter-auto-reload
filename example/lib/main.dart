@@ -52,10 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SizedBox(
+      body: const SizedBox(
         width: double.infinity,
         child: Column(
-          children: const <Widget>[
+          children: <Widget>[
             Expanded(child: DemoAutoReloadWidget()),
             Expanded(child: DemoAutoRequestManager()),
           ],
