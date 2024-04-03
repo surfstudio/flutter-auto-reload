@@ -27,7 +27,6 @@ const _defaultMaxReloadDurationSeconds = 1800;
 /// from [_minReloadDurationSeconds] to [_maxReloadDurationSeconds]
 /// exponentially increasing
 class AutoRequestManager implements AutoFutureManager {
-
   AutoRequestManager({
     int? minReloadDurationSeconds,
     int? maxReloadDurationSeconds,
